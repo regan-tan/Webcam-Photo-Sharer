@@ -33,6 +33,8 @@ class CameraScreen(Screen):
 
 class ImageScreen(Screen):
     def create_link(self):
+        """ Accesses the photo filepath, uploads it to the web, and
+        inserts the link in the Label widget"""
         file_path = App.get_running_app().root.ids.camera_screen.filepath
         filesharer = FileSharer(filepath = file_path)
         url = filesharer.share()
