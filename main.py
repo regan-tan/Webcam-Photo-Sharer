@@ -19,12 +19,11 @@ class CameraScreen(Screen):
         self.ids.camera.texture = None
 
     def capture(self):
-        try:
             current_time = time.strftime('%Y%m%d-%H%M%S')
             filepath = f"files/{current_time}.png"
             self.ids.camera.export_to_png(filepath)
-        except Exception as e:
-            print(f"Error capturing image: {e}")
+            self.manager.current = 'image_screen'
+
 
 
 class ImageScreen(Screen):
