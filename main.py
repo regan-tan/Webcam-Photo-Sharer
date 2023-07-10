@@ -19,9 +19,13 @@ class CameraScreen(Screen):
         self.ids.camera.texture = None
 
     def capture(self):
-        current_time = time.strftime('%Y%m%D-%H%M%S')
-        filename = current_time + ".png"
-        self.ids.camera.export_to_png(filename)
+        try:
+            current_time = time.strftime('%Y%m%d-%H%M%S')
+            filepath = f"files/{current_time}.png"
+            self.ids.camera.export_to_png(filepath)
+        except Exception as e:
+            print(f"Error capturing image: {e}")
+
 
 class ImageScreen(Screen):
     pass
@@ -33,8 +37,6 @@ class MainApp(App):
 
     def build(self):
         return RootWidget()
-    
 
- 
 
 MainApp().run()
